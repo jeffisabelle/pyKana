@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizSettings.ui'
 #
-# Created: Thu Aug 11 15:10:35 2011
+# Created: Fri Aug 12 01:04:17 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,9 +51,11 @@ class Ui_quizSettings(object):
         self.katHanCheck.setObjectName("katHanCheck")
         self.gridLayout.addWidget(self.katHanCheck, 1, 1, 1, 1)
         self.hirYoonCheck = QtGui.QCheckBox(self.layoutWidget)
+        self.hirYoonCheck.setCheckable(False)
         self.hirYoonCheck.setObjectName("hirYoonCheck")
         self.gridLayout.addWidget(self.hirYoonCheck, 2, 0, 1, 1)
         self.katYoonCheck = QtGui.QCheckBox(self.layoutWidget)
+        self.katYoonCheck.setCheckable(False)
         self.katYoonCheck.setObjectName("katYoonCheck")
         self.gridLayout.addWidget(self.katYoonCheck, 2, 1, 1, 1)
         self.layoutWidget1 = QtGui.QWidget(quizSettings)

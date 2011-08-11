@@ -7,7 +7,7 @@ hiragana = ["a","i","u","e","o",
             "ma","mi","mu","me","mo",
             "ya","yu","yo",
             "ra","ri","ru","re","ro",
-            "wa","wo"]
+            "wa","wo", "n"]
 
 hiraganaDakuten = ["ga","gi","gu","ge","go",
                "za","ji","zu","ze","zo",
