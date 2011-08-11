@@ -26,3 +26,9 @@ katakana = ["a","i","u","e","o",
             "ya","yu","yo",
             "ra","ri","ru","re","ro",
             "wa","wo","n"]
+
+katakanaDakuten = ["ga","gi","gu","ge","go",
+               "za","ji","zu","ze","zo",
+               "da","dji","du","de","do",
+               "ba","bi","bu","be","bo",
+               "pa","pi","pu","pe","po"]
