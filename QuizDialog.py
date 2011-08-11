@@ -55,8 +55,6 @@ class QuizDlg(QDialog):
     def setRangeOfChars(self):
         """
         
-        Arguments:
-        - `self`:
         """
         self.set = []
         if self.hirCheck == True:
@@ -75,6 +73,11 @@ class QuizDlg(QDialog):
                 self.chars.append(c)
         
         if self.katCheck == True:
+            self.set.append("katakana")
+            for c in alphabet.katakana:
+                self.chars.append(c)
+
+        if self.katDakutenCheck == True:
             self.set.append("katakana")
             for c in alphabet.katakana:
                 self.chars.append(c)
