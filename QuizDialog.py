@@ -79,7 +79,7 @@ class QuizDlg(QDialog):
 
         if self.katDakutenCheck == True:
             self.set.append("katakana")
-            for c in alphabet.katakana:
+            for c in alphabet.katakanaDakuten:
                 self.chars.append(c)
 
     def getRandomChar(self):
