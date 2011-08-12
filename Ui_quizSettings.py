@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizSettings.ui'
 #
-# Created: Fri Aug 12 01:04:17 2011
+# Created: Fri Aug 12 04:00:25 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,18 +44,18 @@ class Ui_quizSettings(object):
         self.katCheck = QtGui.QCheckBox(self.layoutWidget)
         self.katCheck.setObjectName("katCheck")
         self.gridLayout.addWidget(self.katCheck, 0, 1, 1, 1)
-        self.hirHanCheck = QtGui.QCheckBox(self.layoutWidget)
-        self.hirHanCheck.setObjectName("hirHanCheck")
-        self.gridLayout.addWidget(self.hirHanCheck, 1, 0, 1, 1)
-        self.katHanCheck = QtGui.QCheckBox(self.layoutWidget)
-        self.katHanCheck.setObjectName("katHanCheck")
-        self.gridLayout.addWidget(self.katHanCheck, 1, 1, 1, 1)
+        self.hirDakutenCheck = QtGui.QCheckBox(self.layoutWidget)
+        self.hirDakutenCheck.setObjectName("hirDakutenCheck")
+        self.gridLayout.addWidget(self.hirDakutenCheck, 1, 0, 1, 1)
+        self.katDakutenCheck = QtGui.QCheckBox(self.layoutWidget)
+        self.katDakutenCheck.setObjectName("katDakutenCheck")
+        self.gridLayout.addWidget(self.katDakutenCheck, 1, 1, 1, 1)
         self.hirYoonCheck = QtGui.QCheckBox(self.layoutWidget)
-        self.hirYoonCheck.setCheckable(False)
+        self.hirYoonCheck.setCheckable(True)
         self.hirYoonCheck.setObjectName("hirYoonCheck")
         self.gridLayout.addWidget(self.hirYoonCheck, 2, 0, 1, 1)
         self.katYoonCheck = QtGui.QCheckBox(self.layoutWidget)
-        self.katYoonCheck.setCheckable(False)
+        self.katYoonCheck.setCheckable(True)
         self.katYoonCheck.setObjectName("katYoonCheck")
         self.gridLayout.addWidget(self.katYoonCheck, 2, 1, 1, 1)
         self.layoutWidget1 = QtGui.QWidget(quizSettings)
@@ -93,14 +93,14 @@ class Ui_quizSettings(object):
         self.cancelButton.setText(QtGui.QApplication.translate("quizSettings", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
         self.hirCheck.setText(QtGui.QApplication.translate("quizSettings", "Hiragana", None, QtGui.QApplication.UnicodeUTF8))
         self.katCheck.setText(QtGui.QApplication.translate("quizSettings", "Katakana", None, QtGui.QApplication.UnicodeUTF8))
-        self.hirHanCheck.setText(QtGui.QApplication.translate("quizSettings", "Hiragana with\n"
-"handakuten", None, QtGui.QApplication.UnicodeUTF8))
-        self.katHanCheck.setText(QtGui.QApplication.translate("quizSettings", "Katakana with \n"
-"handakuten", None, QtGui.QApplication.UnicodeUTF8))
+        self.hirDakutenCheck.setText(QtGui.QApplication.translate("quizSettings", "Hiragana with\n"
+"(han)dakuten", None, QtGui.QApplication.UnicodeUTF8))
+        self.katDakutenCheck.setText(QtGui.QApplication.translate("quizSettings", "Katakana with \n"
+"(han)dakuten", None, QtGui.QApplication.UnicodeUTF8))
         self.hirYoonCheck.setText(QtGui.QApplication.translate("quizSettings", "Hiragana with \n"
-" yōon", None, QtGui.QApplication.UnicodeUTF8))
+" yōon + dakuten", None, QtGui.QApplication.UnicodeUTF8))
         self.katYoonCheck.setText(QtGui.QApplication.translate("quizSettings", "Katakana with \n"
-"yōon", None, QtGui.QApplication.UnicodeUTF8))
+"yōon + dakuten", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("quizSettings", "How many questions \n"
 "do you want to take?", None, QtGui.QApplication.UnicodeUTF8))
         self.setContent.setText(QtGui.QApplication.translate("quizSettings", "Please select your quiz content", None, QtGui.QApplication.UnicodeUTF8))
