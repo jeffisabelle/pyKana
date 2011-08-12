@@ -5,10 +5,11 @@ import sys
 from QuizSettingsDialog import *
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-from Ui_main import *
+from ui.Ui_main import *
 
 class PyKana(QMainWindow):
     """
+    Main Window Of The App
     """
     
     def __init__(self, parent = None):
@@ -21,8 +22,9 @@ class PyKana(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.centerOnScreen()
-        
+        self.setWindowIcon(QIcon("imgs/icons/happyIcon.png"))
+
+        self.centerOnScreen()        
         self.connect(self.ui.quizButton, SIGNAL("clicked()"), self.quizClicked)
         
 

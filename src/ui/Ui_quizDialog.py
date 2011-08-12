@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizDialog.ui'
 #
-# Created: Fri Aug 12 01:04:05 2011
+# Created: Fri Aug 12 18:36:19 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,7 +30,7 @@ class Ui_quizDialog(object):
         sizePolicy.setHeightForWidth(self.iconLabel.sizePolicy().hasHeightForWidth())
         self.iconLabel.setSizePolicy(sizePolicy)
         self.iconLabel.setText("")
-        self.iconLabel.setPixmap(QtGui.QPixmap("../../Python/workspace/exampleQt/icons/get.png"))
+        self.iconLabel.setPixmap(QtGui.QPixmap("imgs/icons/qdlg_get.png"))
         self.iconLabel.setObjectName("iconLabel")
         self.btn1 = QtGui.QPushButton(quizDialog)
         self.btn1.setGeometry(QtCore.QRect(40, 520, 110, 27))
@@ -73,7 +73,6 @@ class Ui_quizDialog(object):
         self.imgLabel.setGeometry(QtCore.QRect(0, 0, 500, 500))
         self.imgLabel.setMaximumSize(QtCore.QSize(500, 500))
         self.imgLabel.setText("")
-        self.imgLabel.setPixmap(QtGui.QPixmap("../../Python/workspace/exampleQt/hiragana/a.png"))
         self.imgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.imgLabel.setObjectName("imgLabel")
 

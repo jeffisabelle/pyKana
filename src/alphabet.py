@@ -9,24 +9,6 @@ hiragana = ["a","i","u","e","o",
             "ra","ri","ru","re","ro",
             "wa","wo", "n"]
 
-hiraganaDakuten = ["ga","gi","gu","ge","go",
-               "za","ji","zu","ze","zo",
-               "da","dji","du","de","do",
-               "ba","bi","bu","be","bo",
-               "pa","pi","pu","pe","po"] 
-
-hiraganaYoon = ["kya","kyu","kyo",
-                "sha","shu","sho",
-                "cha","chu","cho",
-                "nya","nyu","nyo",
-                "hya","hyu","hyo",
-                "mya","myu","myo",
-                "rya","ryu","ryo",
-                "ja","ju","jo",
-                "dja","dju","djo",
-                "bya","byu","byo",
-                "pya","pyu","pyo"]
-
 katakana = ["a","i","u","e","o",
             "ka","ki","ku","ke","ko",
             "sa","shi","su","se","so",
@@ -38,8 +20,22 @@ katakana = ["a","i","u","e","o",
             "ra","ri","ru","re","ro",
             "wa","wo","n"]
 
-katakanaDakuten = ["ga","gi","gu","ge","go",
-               "za","ji","zu","ze","zo",
-               "da","dji","du","de","do",
-               "ba","bi","bu","be","bo",
-               "pa","pi","pu","pe","po"]
+dakuten = ["ga","gi","gu","ge","go",
+           "za","ji","zu","ze","zo",
+           "da","dji","du","de","do",
+           "ba","bi","bu","be","bo",
+           "pa","pi","pu","pe","po"] 
+
+yoon = ["kya","kyu","kyo",
+        "sha","shu","sho",
+        "cha","chu","cho",
+        "nya","nyu","nyo",
+        "hya","hyu","hyo",
+        "mya","myu","myo",
+        "rya","ryu","ryo",
+        "gya","gyu","gyo",
+        "ja","ju","jo",
+        "dja","dju","djo",
+        "bya","byu","byo",
+        "pya","pyu","pyo"]
+

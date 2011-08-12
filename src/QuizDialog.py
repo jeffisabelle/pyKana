@@ -4,14 +4,15 @@
 import sys, random, time, alphabet
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-from Ui_quizDialog import *
+from ui.Ui_quizDialog import *
 
 class QuizDlg(QDialog):
     """
+    This class represents the quiz dialog
+    where users answers questions
     """
            
-    def __init__(self, questionCount, cHiragana, cHiraganaDakuten, cHiraganaYoon, 
-                 cKatakana, cKatakanaDakuten, cKatakanaYoon, parent=None):
+    def __init__(self, questionCount, charSet, cDakuten, cYoon, parent=None):
         """
         constructer for objects
 
@@ -24,13 +25,10 @@ class QuizDlg(QDialog):
         self.qCount = questionCount 
         
         # check's are boolean
-        self.hirCheck = cHiragana 
-        self.hirDakutenCheck = cHiraganaDakuten
-        self.hirYoonCheck = cHiraganaYoon
-        self.katCheck = cKatakana
-        self.katDakutenCheck = cKatakanaDakuten
-        self.katYoonCheck = cKatakanaYoon
-        
+        self.charSet = charSet
+        self.checkDakuten = cDakuten
+        self.checkYoon = cYoon
+ 
         # char array for quiz
         self.chars = []
 
@@ -56,40 +54,39 @@ class QuizDlg(QDialog):
         """
         
         """
-        self.set = []
-        if self.hirCheck == True:
-            self.set.append("hiragana")
-            for c in alphabet.hiragana:
-                self.chars.append(c)
-        
-        if self.hirDakutenCheck == True:
-            self.set.append("hiragana")
-            for c in alphabet.hiraganaDakuten:
-                self.chars.append(c)
-
-        if self.hirYoonCheck == True:
-            self.set.append("hiragana")
-            for c in alphabet.hiraganaYoon:
-                self.chars.append(c)
-        
-        if self.katCheck == True:
-            self.set.append("katakana")
+        if self.charSet == "Hiragana":
+            self.chars = alphabet.hiragana[:]
+        elif self.charSet == "Katakana":
+            self.chars = alphabet.katakana[:]
+        else:
+            self.chars = alphabet.hiragana[:]
             for c in alphabet.katakana:
                 self.chars.append(c)
+        
+        if self.checkDakuten == True:
+            for c in alphabet.dakuten:
+                self.chars.append(c)
 
-        if self.katDakutenCheck == True:
-            self.set.append("katakana")
-            for c in alphabet.katakanaDakuten:
+        if self.checkYoon == True:
+            for c in alphabet.yoon:
                 self.chars.append(c)
 
 
     def getRandomChar(self):
         """
-        returns a random hiragana character
+        returns a random character
         """
-        set = random.choice(self.set)
+             
+        if self.charSet == "Both":
+            arr = ["hiragana","katakana"]
+            set = random.choice(arr)
+        else:
+            set = str(self.charSet)
+            set = set.lower()
+
+
         correct = random.choice(self.chars)
-        self.ui.imgLabel.setPixmap(QPixmap(set+"/"+correct+".png"))
+        self.ui.imgLabel.setPixmap(QPixmap("imgs/"+set+"/"+correct+".png"))
         return correct
 
     def setButtonsText(self):
@@ -138,13 +135,13 @@ class QuizDlg(QDialog):
         if(self.answer==self.response):
             self.correctCount += 1
             s = "your response '"+self.response+"' was correct!"
-            self.ui.iconLabel.setPixmap(QPixmap("icons/qdlg_correct.png"))
+            self.ui.iconLabel.setPixmap(QPixmap("imgs/icons/qdlg_correct.png"))
             self.ui.responseLabel.setText(s)            
         
         else:
             self.wrongCount += 1
             s = "your response '"+self.response+"' was wrong!"
-            self.ui.iconLabel.setPixmap(QPixmap("icons/qdlg_wrong.png"))
+            self.ui.iconLabel.setPixmap(QPixmap("imgs/icons/qdlg_wrong.png"))
             self.ui.responseLabel.setText(s)
 
         if(self.qAnswered>=self.qCount):
@@ -155,14 +152,12 @@ class QuizDlg(QDialog):
         
             if self.wrongCount >= self.correctCount:
                 msgBox.setWindowTitle("Y U don't know kana!")
-                msgBox.setIconPixmap(QPixmap("icons/angryIcon.png"))
+                msgBox.setIconPixmap(QPixmap("imgs/icons/angryIcon.png"))
             else:
                 msgBox.setWindowTitle("You got a nice score!")
-                msgBox.setIconPixmap(QPixmap("icons/happyIcon.png"))
-            
-            msgBox.exec_()
+                msgBox.setIconPixmap(QPixmap("imgs/icons/happyIcon.png"))
 
+            msgBox.exec_()
 
                     
         self.startQuiz()
-        
