@@ -13,9 +13,7 @@ class QuizSettingsDlg(QDialog):
     
     def __init__(self, parent=None):
         """
-        
-        Arguments:
-        - `parent`:
+        constructer for settings
         """
         super(QuizSettingsDlg, self).__init__(parent)
         self.ui = Ui_quizSettings()
@@ -27,9 +25,6 @@ class QuizSettingsDlg(QDialog):
     def centerOnScreen(self):
         """
         move the window to the center of the screen
-
-        Arguments:
-        - `self`:
         """
         resolution = QtGui.QDesktopWidget().screenGeometry()
         self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
@@ -40,27 +35,24 @@ class QuizSettingsDlg(QDialog):
         """
         create a quiz dlg object
         and execute it
-
-        Arguments:
-        - `self`:
         """
         
         # these are the settings gathered from user
         # about the quiz
         self.qCount = self.ui.spinBox.value()
         self.hirCheck = self.ui.hirCheck.isChecked()
-        self.hirHanCheck = self.ui.hirHanCheck.isChecked()
+        self.hirDakutenCheck = self.ui.hirDakutenCheck.isChecked()
         self.hirYoonCheck = self.ui.hirYoonCheck.isChecked()
         self.katCheck = self.ui.katCheck.isChecked()
-        self.katHanCheck = self.ui.katHanCheck.isChecked()
+        self.katDakutenCheck = self.ui.katDakutenCheck.isChecked()
         self.katYoonCheck = self.ui.katYoonCheck.isChecked()
         
         # -debug-
-        # print self.hirCheck , " - " , self.hirHanCheck , " - " , self.hirYoonCheck 
-        # print self.katCheck , " - " , self.katHanCheck , " - " , self.katYoonCheck
+        # print self.hirCheck , " - " , self.hirDakutenCheck , " - " , self.hirYoonCheck 
+        # print self.katCheck , " - " , self.katDakutenCheck , " - " , self.katYoonCheck
         
-        quiz = QuizDlg(self.qCount, self.hirCheck, self.hirHanCheck, self.hirYoonCheck,
-                       self.katCheck, self.katHanCheck, self.katYoonCheck)
+        quiz = QuizDlg(self.qCount, self.hirCheck, self.hirDakutenCheck, self.hirYoonCheck,
+                       self.katCheck, self.katDakutenCheck, self.katYoonCheck)
 
         quiz.exec_()
 
