@@ -15,6 +15,17 @@ hiraganaDakuten = ["ga","gi","gu","ge","go",
                "ba","bi","bu","be","bo",
                "pa","pi","pu","pe","po"] 
 
+hiraganaYoon = ["kya","kyu","kyo",
+                "sha","shu","sho",
+                "cha","chu","cho",
+                "nya","nyu","nyo",
+                "hya","hyu","hyo",
+                "mya","myu","myo",
+                "rya","ryu","ryo",
+                "ja","ju","jo",
+                "dja","dju","djo",
+                "bya","byu","byo",
+                "pya","pyu","pyo"]
 
 katakana = ["a","i","u","e","o",
             "ka","ki","ku","ke","ko",
