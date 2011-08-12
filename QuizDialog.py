@@ -82,6 +82,7 @@ class QuizDlg(QDialog):
             for c in alphabet.katakanaDakuten:
                 self.chars.append(c)
 
+
     def getRandomChar(self):
         """
         returns a random hiragana character
