@@ -18,7 +18,7 @@ class QuizSettingsDlg(QDialog):
         super(QuizSettingsDlg, self).__init__(parent)
         self.ui = Ui_quizSettings()
         self.ui.setupUi(self)
-             
+                
         self.centerOnScreen()
         self.connect(self.ui.startButton, SIGNAL("clicked()"), self.startClicked)
         self.setWindowIcon(QIcon("imgs/icons/settings.png"))
