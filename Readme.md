@@ -16,8 +16,8 @@ you can still get it working and test some of the futures.
 
 ## screenshots
 
-![main](https://github.com/jeffisabelle/pyKana/raw/master/icons/screenshots/ss1.png)
+![main](https://github.com/jeffisabelle/pyKana/raw/master/src/imgs/icons/screenshots/ss1.png)
 
-![settings](https://github.com/jeffisabelle/pyKana/raw/master/icons/screenshots/ss2.png)
+![settings](https://github.com/jeffisabelle/pyKana/raw/master/src/imgs/icons/screenshots/ss2.png)
 
-![congrats](https://github.com/jeffisabelle/pyKana/raw/master/icons/screenshots/ss3.png)
+![congrats](https://github.com/jeffisabelle/pyKana/raw/master/src/imgs/icons/screenshots/ss3.png)
