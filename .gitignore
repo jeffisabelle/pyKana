@@ -1,5 +1,6 @@
 resources/*
 .ropeproject/*
+src/.ropeproject/*
 *.ui
 *.pyc
 
