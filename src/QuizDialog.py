@@ -155,22 +155,23 @@ class QuizDlg(QDialog):
             rangePerfect = fark * 5
             
             if self.correctCount <= rangeTooBad:                
+                # print "too bad" 
                 msgBox.setWindowTitle("Y U don't know kana!")
                 msgBox.setIconPixmap(QPixmap("imgs/icons/1.png"))
             elif self.correctCount > rangeTooBad and self.correctCount <= rangeBad:
-                print "bad"
+                # print "bad"
                 msgBox.setWindowTitle("Sorry but you need to work hard!")
-                msgBox.setIconPixmap(QPixmap("imgs/icons/2.png"))
+                msgBox.setIconPixmap(QPixmap(" imgs/icons/2.png"))
             elif self.correctCount > rangeBad and self.correctCount <= rangeNormal:
-                print "normal"
+                # print "normal"
                 msgBox.setWindowTitle("It's not bad!")
                 msgBox.setIconPixmap(QPixmap("imgs/icons/3.png"))
             elif self.correctCount > rangeNormal and self.correctCount <= rangeGood:
-                print "good"
+                # print "good"
                 msgBox.setWindowTitle("Wow, that is a good score!")
                 msgBox.setIconPixmap(QPixmap("imgs/icons/4.png"))
             else:
-                print "perfect"
+                # print "perfect"
                 msgBox.setWindowTitle("Y U Know Kana!")
                 msgBox.setIconPixmap(QPixmap("imgs/icons/5.png"))
 
