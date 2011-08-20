@@ -45,7 +45,8 @@ class QuizDlg(QDialog):
         self.connect(self.ui.btn2, SIGNAL("clicked()"), self.buttonClicked)
         self.connect(self.ui.btn3, SIGNAL("clicked()"), self.buttonClicked)
         self.connect(self.ui.btn4, SIGNAL("clicked()"), self.buttonClicked)
-                
+            
+        self.ui.totalCount.setText(str(self.qAnswered)+"/"+str(self.qCount))
         self.setRangeOfChars()
         self.startQuiz()
 
@@ -131,33 +132,55 @@ class QuizDlg(QDialog):
         self.response = sender.text()        
 
         self.qAnswered += 1
+        self.ui.totalCount.setText(str(self.qAnswered)+"/"+str(self.qCount))
 
         if(self.answer==self.response):
             self.correctCount += 1
-            s = "your response '"+self.response+"' was correct!"
-            self.ui.iconLabel.setPixmap(QPixmap("imgs/icons/qdlg_correct.png"))
-            self.ui.responseLabel.setText(s)            
-        
+            self.ui.correctCount.setText(str(self.correctCount))                    
         else:
             self.wrongCount += 1
-            s = "your response '"+self.response+"' was wrong!"
-            self.ui.iconLabel.setPixmap(QPixmap("imgs/icons/qdlg_wrong.png"))
-            self.ui.responseLabel.setText(s)
+            self.ui.wrongCount.setText(str(self.wrongCount))
 
         if(self.qAnswered>=self.qCount):
             self.close()
+
             msgBox = QMessageBox()
             msgBox.setText("You have finished your quiz!")
             msgBox.setInformativeText("You got "+str(self.correctCount)+" correct answer \nin "+ str(self.qCount)+" questions.")
-        
-            if self.wrongCount >= self.correctCount:
+            fark = self.qAnswered / 5.0
+            rangeTooBad = fark
+            rangeBad = fark * 2
+            rangeNormal = fark * 3
+            rangeGood = fark * 4
+            rangePerfect = fark * 5
+            
+            if self.correctCount <= rangeTooBad:                
                 msgBox.setWindowTitle("Y U don't know kana!")
-                msgBox.setIconPixmap(QPixmap("imgs/icons/angryIcon.png"))
+                msgBox.setIconPixmap(QPixmap("imgs/icons/1.png"))
+            elif self.correctCount > rangeTooBad and self.correctCount <= rangeBad:
+                print "bad"
+                msgBox.setWindowTitle("Sorry but you need to work hard!")
+                msgBox.setIconPixmap(QPixmap("imgs/icons/2.png"))
+            elif self.correctCount > rangeBad and self.correctCount <= rangeNormal:
+                print "normal"
+                msgBox.setWindowTitle("It's not bad!")
+                msgBox.setIconPixmap(QPixmap("imgs/icons/3.png"))
+            elif self.correctCount > rangeNormal and self.correctCount <= rangeGood:
+                print "good"
+                msgBox.setWindowTitle("Wow, that is a good score!")
+                msgBox.setIconPixmap(QPixmap("imgs/icons/4.png"))
             else:
-                msgBox.setWindowTitle("You got a nice score!")
-                msgBox.setIconPixmap(QPixmap("imgs/icons/happyIcon.png"))
+                print "perfect"
+                msgBox.setWindowTitle("Y U Know Kana!")
+                msgBox.setIconPixmap(QPixmap("imgs/icons/5.png"))
 
             msgBox.exec_()
 
-                    
+        # ask new question recursively if not finish
         self.startQuiz()
+
+
+            
+
+            
+            
