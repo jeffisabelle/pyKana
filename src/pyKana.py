@@ -3,6 +3,7 @@
 
 import sys 
 from QuizSettingsDialog import *
+from RomanizeWords import *
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from ui.Ui_main import *
@@ -26,6 +27,7 @@ class PyKana(QMainWindow):
 
         self.centerOnScreen()        
         self.connect(self.ui.quizButton, SIGNAL("clicked()"), self.quizClicked)
+        self.connect(self.ui.romanizeButton, SIGNAL("clicked()"), self.romanizeClicked)
         
 
     def centerOnScreen(self):
@@ -49,6 +51,16 @@ class PyKana(QMainWindow):
         """
         self.settings = QuizSettingsDlg()
         self.settings.exec_()
+
+    def romanizeClicked(self):
+        """
+        
+        Arguments:
+        - `self`:
+        """
+        self.romanize = RomanizeWords()
+        self.romanize.exec_()
+        
 
 
 app = QApplication(sys.argv)
