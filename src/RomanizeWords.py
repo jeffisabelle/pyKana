@@ -42,8 +42,9 @@ class RomanizeWords(QDialog):
         self.word_arr = random.choice(dictionary.romanize)
         self.correct_answer = self.word_arr[0]
         self.syllable_ver = self.word_arr[1]
-        self.char_set = self.word_arr[2]        
-        self.picArray = dictionary.removeMinusSign(self.syllable_ver)
+        self.char_set = self.word_arr[2]      
+        self.meaning_of_word = self.word_arr[3]
+        self.pic_array = dictionary.getPictureArray(self.syllable_ver)
         
 
     def getLengthOfTheWord(self):
@@ -53,7 +54,7 @@ class RomanizeWords(QDialog):
         Arguments:
         - `self`:
         """        
-        return len(self.picArray)
+        return len(self.pic_array)
 
     def setLabels(self, len):
         """
@@ -74,16 +75,16 @@ class RomanizeWords(QDialog):
             label.clear()
         
         for i in range(len):
-            self.labels[i].setPixmap(QPixmap("imgs/"+self.char_set+"/resized/"+self.picArray[i]))
-            print self.picArray[i]
+            self.labels[i].setPixmap(QPixmap("imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
+            # print self.picArray[i]
 
     def askQuestion(self):
         """
         
         Arguments:
         - `self`:
-        """
-        self.ui.lineEdit.selectAll()
+        """        
+        self.ui.lineEdit.clear()
         self.setTheWord()
         self.lenOfWord = self.getLengthOfTheWord()
         self.setLabels(self.lenOfWord)            
@@ -95,7 +96,6 @@ class RomanizeWords(QDialog):
         Arguments:
         - `self`:
         """
-        print "girdi"
         self.given_answer = self.ui.lineEdit.text()
         if self.given_answer == self.correct_answer:
             msgBox = QMessageBox()
