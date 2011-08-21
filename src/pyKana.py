@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-import sys 
+import sys
 from QuizSettingsDialog import *
 from RomanizeWords import *
+from ReadmeDialog import *
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from ui.Ui_main import *
@@ -23,12 +24,13 @@ class PyKana(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowIcon(QIcon("imgs/icons/happyIcon.png"))
 
-        self.centerOnScreen()        
+        self.centerOnScreen()         
+
         self.connect(self.ui.quizButton, SIGNAL("clicked()"), self.quizClicked)
         self.connect(self.ui.romanizeButton, SIGNAL("clicked()"), self.romanizeClicked)
-        
+        self.connect(self.ui.actionReadme, SIGNAL("triggered()"), self.readmeTriggered)
+
 
     def centerOnScreen(self):
         """
@@ -60,6 +62,16 @@ class PyKana(QMainWindow):
         """
         self.romanize = RomanizeWords()
         self.romanize.exec_()
+        
+    def readmeTriggered(self):
+        """
+        Opens the readme dialog
+        
+        Arguments:
+        - `self`:
+        """
+        self.about = ReadmeDlg()
+        self.about.exec_()
         
 
 
