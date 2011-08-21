@@ -4,7 +4,7 @@
 import sys
 from QuizSettingsDialog import *
 from RomanizeWords import *
-from ReadmeDialog import *
+from AboutDialog import *
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from ui.Ui_main import *
@@ -70,7 +70,7 @@ class PyKana(QMainWindow):
         Arguments:
         - `self`:
         """
-        self.about = ReadmeDlg()
+        self.about = AboutDlg()
         self.about.exec_()
         
 

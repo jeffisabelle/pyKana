@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizSettings.ui'
 #
-# Created: Fri Aug 12 18:32:29 2011
+# Created: Sun Aug 21 23:57:32 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -20,6 +20,9 @@ class Ui_quizSettings(object):
         quizSettings.setSizePolicy(sizePolicy)
         quizSettings.setMinimumSize(QtCore.QSize(350, 280))
         quizSettings.setMaximumSize(QtCore.QSize(350, 280))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/imgs/icons/settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        quizSettings.setWindowIcon(icon)
         self.startButton = QtGui.QPushButton(quizSettings)
         self.startButton.setGeometry(QtCore.QRect(240, 240, 100, 30))
         self.startButton.setObjectName("startButton")
@@ -48,12 +51,12 @@ class Ui_quizSettings(object):
         self.gridLayout.addWidget(self.checkYoon, 2, 0, 1, 1)
         self.gorsel1 = QtGui.QLabel(self.layoutWidget)
         self.gorsel1.setText("")
-        self.gorsel1.setPixmap(QtGui.QPixmap("imgs/icons/handaku.png"))
+        self.gorsel1.setPixmap(QtGui.QPixmap(":/imgs/icons/handaku.png"))
         self.gorsel1.setObjectName("gorsel1")
         self.gridLayout.addWidget(self.gorsel1, 1, 1, 1, 1)
         self.gorsel2 = QtGui.QLabel(self.layoutWidget)
         self.gorsel2.setText("")
-        self.gorsel2.setPixmap(QtGui.QPixmap("imgs/icons/yoon.png"))
+        self.gorsel2.setPixmap(QtGui.QPixmap(":/imgs/icons/yoon.png"))
         self.gorsel2.setObjectName("gorsel2")
         self.gridLayout.addWidget(self.gorsel2, 2, 1, 1, 1)
         self.layoutWidget1 = QtGui.QWidget(quizSettings)
@@ -108,3 +111,4 @@ class Ui_quizSettings(object):
         self.label.setText(QtGui.QApplication.translate("quizSettings", "How many questions \n"
 "do you want to take?", None, QtGui.QApplication.UnicodeUTF8))
 
+import resources_rc

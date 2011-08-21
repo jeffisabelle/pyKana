@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizDialog.ui'
 #
-# Created: Tue Aug 16 04:40:39 2011
+# Created: Mon Aug 22 00:01:56 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -15,6 +15,9 @@ class Ui_quizDialog(object):
         quizDialog.resize(540, 600)
         quizDialog.setMinimumSize(QtCore.QSize(540, 600))
         quizDialog.setMaximumSize(QtCore.QSize(540, 600))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/imgs/icons/m_quiz.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        quizDialog.setWindowIcon(icon)
         self.correctCount = QtGui.QLabel(quizDialog)
         self.correctCount.setGeometry(QtCore.QRect(69, 550, 31, 31))
         font = QtGui.QFont()
@@ -113,3 +116,4 @@ class Ui_quizDialog(object):
         self.wrongCount.setText(QtGui.QApplication.translate("quizDialog", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.totalCount.setText(QtGui.QApplication.translate("quizDialog", "0 / 5", None, QtGui.QApplication.UnicodeUTF8))
 
+import resources_rc
