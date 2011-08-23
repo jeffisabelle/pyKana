@@ -83,7 +83,7 @@ class RomanizeWords(QtGui.QDialog):
             label.clear()
         
         for i in range(len):
-            self.labels[i].setPixmap(QPixmap(":/imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
+            self.labels[i].setPixmap(QtGui.QPixmap(":/imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
             # print self.picArray[i]
 
     def ask_question(self):
@@ -110,7 +110,7 @@ class RomanizeWords(QtGui.QDialog):
             text = "\nPerfect!\n\nyour answer: '"+self.given_answer+"' \nwas correct!" 
             text += "\n\n\n"+self.correct_answer+" means '"+self.meaning_of_word+"'"
             msg_box.setText(text)
-            pic = QPixmap(":/imgs/icons/4resized.png")
+            pic = QtGui.QPixmap(":/imgs/icons/4resized.png")
             msg_box.setIconPixmap(pic)            
         else:
             msg_box.setWindowTitle("Be More Careful!")
@@ -118,7 +118,7 @@ class RomanizeWords(QtGui.QDialog):
             text += "\nthe correct answer was: '"+self.correct_answer+"'" 
             text += "\n\n\n"+self.correct_answer+" means '"+self.meaning_of_word+"'"
             msg_box.setText(text)
-            pic = QPixmap(":/imgs/icons/2resized.png")
+            pic = QtGui.QPixmap(":/imgs/icons/2resized.png")
             msg_box.setIconPixmap(pic)                      
 
         self.center_on_screen(msg_box)        
