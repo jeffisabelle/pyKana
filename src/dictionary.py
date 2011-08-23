@@ -4,12 +4,17 @@ romanize = [
     ["arigatou","a-ri-ga-to-u","hiragana", "thank you"],
     ["sensei","se-n-se-i","hiragana", "teacher/sir"],
     ["hajimemashite","ha-ji-me-ma-shi-te","hiragana", "i'm glad to meet you"],
-    ["oyasumi","o-ya-su-mi","hiragana","good night"],
+    ["oyasuminasai","o-ya-su-mi-na-sa-i","hiragana","good night"],
     ["itaria","i-ta-ri-a","katakana", "italy"],
     ["amerika","a-me-ri-ka","katakana", "america"],
     ["furansu","fu-ra-n-su","katakana", "france"],
     ["doitsu","do-i-tsu","katakana", "germany"],
-    ["kanada","ka-na-da","katakana", "canada"]
+    ["kanada","ka-na-da","katakana", "canada"],
+    ["sumimasen","su-mi-ma-se-n","hiragana", "excuse me"],
+    ["raiburari","ra-i-bu-ra-ri","katakana", "library"],
+    ["ohayou","o-ha-yo-u","hiragana", "good morning"],
+    ["gomennasai","go-me-n-na-sa-i","hiragana", "I'm sorry"],
+    ["isha","i-sha","hiragana", "doctor"]
     ]
     
 def getPictureArray(string):

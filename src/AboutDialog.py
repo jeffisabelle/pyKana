@@ -3,22 +3,23 @@
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+
 from ui.Ui_about import *
 
-class AboutDlg(QDialog):
+class AboutDialog(QDialog):
     """
     """
     
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         """
         """
-        super(AboutDlg, self).__init__(parent)
+        super(AboutDialog, self).__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.labelImg.setPixmap(QPixmap(":/imgs/icons/avatar.png"))
-        self.centerOnScreen()
+        self.center_on_screen()
         
-    def centerOnScreen(self):
+    def center_on_screen(self):
         """
         move the window to the center of the screen
 

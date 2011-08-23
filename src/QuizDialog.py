@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-import sys, random, time, alphabet, icons_rc
+import random
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+
 from ui.Ui_quizDialog import *
+import alphabet
+import icons_rc
 
 class QuizDlg(QDialog):
     """

@@ -1,14 +1,17 @@
-import dictionary, random, icons_rc
+import random
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-from ui.Ui_romanize import *
 
+from ui.Ui_romanize import *
+import icons_rc
+import dictionary
 
 class RomanizeWords(QDialog):
     """
     """
     
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         """
         """        
         super(RomanizeWords, self).__init__(parent)
@@ -16,25 +19,28 @@ class RomanizeWords(QDialog):
         self.ui.setupUi(self)        
         self.ui.lineEdit.setText("romanize it here, and press enter")
         self.ui.lineEdit.selectAll()
-        self.askQuestion()        
-        self.connect(self.ui.checkButton, SIGNAL("clicked()"), self.checkAnswer)
+        self.ask_question()        
+        self.connect(self.ui.checkButton, SIGNAL("clicked()"), self.check_answer)
 
-        self.centerOnScreen()
+        self.center_on_screen()
 
-    def centerOnScreen(self):
+    def center_on_screen(self, widget=None):
         """
         
         Arguments:
         - `self`:
         """
-        
         resolution = QtGui.QDesktopWidget().screenGeometry()
-        self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
-                (resolution.height() / 2) - (self.frameSize().height() / 2))
+        if widget:
+            widget.move((resolution.width() / 2) - (widget.sizeHint().width() / 2),
+                        (resolution.height() / 2) - (widget.sizeHint().height() / 2))
+        else:
+            self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
+                      (resolution.height() / 2) - (self.frameSize().height() / 2))
 
 
 
-    def setTheWord(self):
+    def set_the_word(self):
         """
         
         Arguments:
@@ -48,7 +54,7 @@ class RomanizeWords(QDialog):
         self.pic_array = dictionary.getPictureArray(self.syllable_ver)
         
 
-    def getLengthOfTheWord(self):
+    def get_length_of_the_word(self):
         """
         returns the number of syllable of the word.
         eg. a-no-hi-to returns 4.
@@ -57,11 +63,12 @@ class RomanizeWords(QDialog):
         """        
         return len(self.pic_array)
 
-    def setLabels(self, len):
+    def set_labels(self, len):
         """
+        this method sets the labels with appropriate
+        images by using 'pic_array'
         
         Arguments:
-        - `self`:
         - `len`: length of the word
         """
 
@@ -79,60 +86,42 @@ class RomanizeWords(QDialog):
             self.labels[i].setPixmap(QPixmap(":/imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
             # print self.picArray[i]
 
-    def askQuestion(self):
+    def ask_question(self):
         """
-        
-        Arguments:
-        - `self`:
+        this method ask a question.
+        called recursively after checking the answer.
         """        
-        self.setTheWord()
-        self.lenOfWord = self.getLengthOfTheWord()
-        self.setLabels(self.lenOfWord)            
+        self.set_the_word()
+        self.lenOfWord = self.get_length_of_the_word()
+        self.set_labels(self.lenOfWord)            
             
 
-    def checkAnswer(self):
+    def check_answer(self):
         """
         
         Arguments:
-        - `self`:
         """
-        msgBox = QMessageBox()
+        msg_box = QMessageBox()
         self.given_answer = self.ui.lineEdit.text()
+
         if self.given_answer == self.correct_answer:
 
-            msgBox.setWindowTitle("Well Done!")
+            msg_box.setWindowTitle("Well Done!")
             text = "\nPerfect!\n\nyour answer: '"+self.given_answer+"' \nwas correct!" 
             text += "\n\n\n"+self.correct_answer+" means '"+self.meaning_of_word+"'"
-            msgBox.setText(text)
+            msg_box.setText(text)
             pic = QPixmap(":/imgs/icons/4resized.png")
-            msgBox.setIconPixmap(pic)
-            self.askQuestion()
+            msg_box.setIconPixmap(pic)            
         else:
-            msgBox = QMessageBox()
-            msgBox.setWindowTitle("Be More Careful!")
+            msg_box.setWindowTitle("Be More Careful!")
             text = "\nSorry :/ \n\nyour answer: '"+self.given_answer+"' was wrong!" 
             text += "\nthe correct answer was: '"+self.correct_answer+"'" 
             text += "\n\n\n"+self.correct_answer+" means '"+self.meaning_of_word+"'"
-            msgBox.setText(text)
+            msg_box.setText(text)
             pic = QPixmap(":/imgs/icons/2resized.png")
-            msgBox.setIconPixmap(pic)                      
-            self.askQuestion()
+            msg_box.setIconPixmap(pic)                      
 
-        centerOnScreen(msgBox)
-        msgBox.exec_()
+        self.center_on_screen(msg_box)        
+        msg_box.exec_()
+        self.ask_question()
         self.ui.lineEdit.clear()
-
-
-
-def centerOnScreen(widget):
-    """
-    move the given widget to the center of the screen
-
-    Arguments:
-    - `self`:
-    """
-    resolution = QtGui.QDesktopWidget().screenGeometry()
-    widget.move((resolution.width() / 2) - (widget.sizeHint().width() / 2),
-                (resolution.height() / 2) - (widget.sizeHint().height() / 2))
-    
-

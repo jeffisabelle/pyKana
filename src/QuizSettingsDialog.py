@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-import sys, icons_rc
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+
 from ui.Ui_quizSettings import *
 from QuizDialog import *
+import icons_rc
 
 class QuizSettingsDlg(QDialog):
     """
@@ -19,11 +20,11 @@ class QuizSettingsDlg(QDialog):
         self.ui = Ui_quizSettings()
         self.ui.setupUi(self)
                 
-        self.centerOnScreen()
-        self.connect(self.ui.startButton, SIGNAL("clicked()"), self.startClicked)
+        self.center_on_screen()
+        self.connect(self.ui.startButton, SIGNAL("clicked()"), self.start_clicked)
         self.setWindowIcon(QIcon(":/imgs/icons/settings.png"))
 
-    def centerOnScreen(self):
+    def center_on_screen(self):
         """
         move the window to the center of the screen
         """
@@ -32,7 +33,7 @@ class QuizSettingsDlg(QDialog):
                   (resolution.height() / 2) - (self.frameSize().height() / 2))
 
 
-    def startClicked(self):
+    def start_clicked(self):
         """
         create a quiz dlg object
         and execute it
