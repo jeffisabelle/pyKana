@@ -1,42 +1,60 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
+"""
+Represents the vocabulary practice
+dialog
+"""
+
 import random
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4 import QtCore
+from PyQt4 import QtGui
 
-from ui.Ui_vocabulary import *
-import icons_rc
+import ui.Ui_vocabulary 
+import resources_rc
 import dictionary
 
-class VocabularyDialog(QDialog):
+class VocabularyDialog(QtGui.QDialog):
     """
+    Represents the vocabulary practice
+    dialog
     """
     
     def __init__(self, parent=None):
         """
-        
-        Arguments:
+        constructer for vocabulary dialog objects
         """
+
         super(VocabularyDialog, self).__init__(parent)
-        self.ui = Ui_vocabularyDialog()
-        self.ui.setupUi(self)
+        self.interface = ui.Ui_vocabulary.Ui_vocabularyDialog()
+        self.interface.setupUi(self)
+       
         self.ask_new_word()
         self.center_on_screen()        
 
-        self.connect(self.ui.cevap1Button, SIGNAL("clicked()"), self.button_clicked)
-        self.connect(self.ui.cevap2Button, SIGNAL("clicked()"), self.button_clicked)
-        self.connect(self.ui.cevap3Button, SIGNAL("clicked()"), self.button_clicked)
-        self.connect(self.ui.cevap4Button, SIGNAL("clicked()"), self.button_clicked)
+        self.connect(self.interface.cevap1Button, 
+                     QtCore.SIGNAL("clicked()"), self.button_clicked)
+        self.connect(self.interface.cevap2Button, 
+                     QtCore.SIGNAL("clicked()"), self.button_clicked)
+        self.connect(self.interface.cevap3Button, 
+                     QtCore.SIGNAL("clicked()"), self.button_clicked)
+        self.connect(self.interface.cevap4Button, 
+                     QtCore.SIGNAL("clicked()"), self.button_clicked)
 
+        self.word_arr = []
+        self.correct_answer = ""
+        self.syllable_ver = ""
+        self.char_set = ""
+        self.meaning_of_word = ""
+        self.pic_array = []
+        self.labels = []
+        self.len_of_word = 0
+        self.response_of_user = ""
 
     def center_on_screen(self):
         """
         move the window to the center of the screen
-
-        Arguments:
-        - `self`:
         """
         resolution = QtGui.QDesktopWidget().screenGeometry()
         self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
@@ -44,7 +62,7 @@ class VocabularyDialog(QDialog):
 
     def set_the_word(self):
         """
-        
+        sets the word
         """
         self.word_arr = random.choice(dictionary.romanize)
         self.correct_answer = self.word_arr[0]
@@ -64,42 +82,42 @@ class VocabularyDialog(QDialog):
         return len(self.pic_array)
 
 
-    def set_labels(self, len):
+    def set_labels(self, length):
         """
         this method sets the labels with appropriate
         images by using 'pic_array'
         
         Arguments:
-        - `len`: length of the word
+        - `length`: length of the word
         """
-
-
-        self.labels = [self.ui.harf1,self.ui.harf2,
-                       self.ui.harf3,self.ui.harf4,
-                       self.ui.harf5,self.ui.harf6,
-                       self.ui.harf7,self.ui.harf8
+        self.labels = [self.interface.harf1, self.interface.harf2,
+                       self.interface.harf3, self.interface.harf4,
+                       self.interface.harf5, self.interface.harf6,
+                       self.interface.harf7, self.interface.harf8
                        ]
 
         for label in self.labels:
             label.clear()
         
-        for i in range(len):
-            self.labels[i].setPixmap(QPixmap(":/imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
+        for i in range(length):
+            self.labels[i].setPixmap(QtGui.QPixmap(
+                    ":/imgs/"+self.char_set+"/resized/"+self.pic_array[i]))
 
-        self.ui.romanizedLabel.setText("chose your answer from below")
+        self.interface.romanizedLabel.setText("chose your answer from below")
 
     def ask_new_word(self):
         """
-        
+        asks new words.
+        called recursively after response
         """
         self.set_the_word()
-        self.lenOfWord = self.get_length_of_the_word()
-        self.set_labels(self.lenOfWord)    
+        self.len_of_word = self.get_length_of_the_word()
+        self.set_labels(self.len_of_word)    
         self.set_button_labels()
     
     def set_button_labels(self):
         """
-        
+        sets the labels of buttons.
         """
         answers_arr = []
         for row in dictionary.romanize:
@@ -119,32 +137,34 @@ class VocabularyDialog(QDialog):
         rnd4 = random.choice(answers_arr)
         answers_arr.remove(rnd4)
 
-        buttons = [self.ui.cevap1Button, self.ui.cevap2Button,
-                   self.ui.cevap3Button, self.ui.cevap4Button]
+        buttons = [self.interface.cevap1Button, self.interface.cevap2Button,
+                   self.interface.cevap3Button, self.interface.cevap4Button]
  
-        self.ui.cevap1Button.setText(rnd1)
-        self.ui.cevap2Button.setText(rnd2)
-        self.ui.cevap3Button.setText(rnd3)
-        self.ui.cevap4Button.setText(rnd4)
+        self.interface.cevap1Button.setText(rnd1)
+        self.interface.cevap2Button.setText(rnd2)
+        self.interface.cevap3Button.setText(rnd3)
+        self.interface.cevap4Button.setText(rnd4)
 
         random.choice(buttons).setText(self.meaning_of_word)
         
     def button_clicked(self):
         """
-        
+        this method called when any answer button
+        clicked.
         """
         sender = self.sender()
         self.response_of_user = sender.text()
 
 
-        msg_box = QMessageBox()
+        msg_box = QtGui.QMessageBox()
         
         if self.response_of_user == self.meaning_of_word:
             msg_box.setText("you did it! \nthat answer was correct (O_o)/")
-            msg_box.setIconPixmap(QPixmap(":/imgs/icons/4resized.png"))
+            msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/4resized.png"))
         else:
-            msg_box.setText("sorry but that was a wrong choice! \nkeep working!")
-            msg_box.setIconPixmap(QPixmap(":/imgs/icons/2resized.png"))
+            msg_box.setText("sorry but that was a wrong choice!"+
+                            " \nkeep working!")
+            msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/2resized.png"))
 
 
         msg_box.exec_()

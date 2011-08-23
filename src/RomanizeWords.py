@@ -1,13 +1,13 @@
 import random
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4 import QtCore
+from PyQt4 import QtGui
 
 from ui.Ui_romanize import *
-import icons_rc
+import resources_rc
 import dictionary
 
-class RomanizeWords(QDialog):
+class RomanizeWords(QtGui.QDialog):
     """
     """
     
@@ -20,7 +20,7 @@ class RomanizeWords(QDialog):
         self.ui.lineEdit.setText("romanize it here, and press enter")
         self.ui.lineEdit.selectAll()
         self.ask_question()        
-        self.connect(self.ui.checkButton, SIGNAL("clicked()"), self.check_answer)
+        self.connect(self.ui.checkButton, QtCore.SIGNAL("clicked()"), self.check_answer)
 
         self.center_on_screen()
 
@@ -101,7 +101,7 @@ class RomanizeWords(QDialog):
         
         Arguments:
         """
-        msg_box = QMessageBox()
+        msg_box = QtGui.QMessageBox()
         self.given_answer = self.ui.lineEdit.text()
 
         if self.given_answer == self.correct_answer:

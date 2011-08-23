@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
+"""
+This module creates the dialog
+for Quiz Settings
+"""
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4 import QtCore
+from PyQt4 import QtGui
 
-from ui.Ui_quizSettings import *
-from QuizDialog import *
-import icons_rc
+import ui.Ui_quizSettings
+import QuizDialog
 
-class QuizSettingsDlg(QDialog):
+class QuizSettingsDlg(QtGui.QDialog):
     """
+    Creates the Settings Dialog Object
     """
     
     def __init__(self, parent=None):
@@ -17,12 +21,20 @@ class QuizSettingsDlg(QDialog):
         constructer for settings
         """
         super(QuizSettingsDlg, self).__init__(parent)
-        self.ui = Ui_quizSettings()
-        self.ui.setupUi(self)
+        self.interface = ui.Ui_quizSettings.Ui_quizSettings()
+        self.interface.setupUi(self)
                 
         self.center_on_screen()
-        self.connect(self.ui.startButton, SIGNAL("clicked()"), self.start_clicked)
-        self.setWindowIcon(QIcon(":/imgs/icons/settings.png"))
+        self.connect(self.interface.startButton, QtCore.SIGNAL("clicked()"), 
+                     self.start_clicked)
+        
+        self.setWindowIcon(QtGui.QIcon(":/imgs/icons/settings.png"))
+
+        self.q_count = 0
+        self.char_set = ""
+        self.check_dakuten = False
+        self.check_yoon = False
+        
 
     def center_on_screen(self):
         """
@@ -42,11 +54,13 @@ class QuizSettingsDlg(QDialog):
         # these are the settings gathered from user
         # about the quiz
         
-        self.qCount = self.ui.spinBox.value()
-        self.charSet = self.ui.comboBox.currentText() 
-        self.checkDakuten = self.ui.checkDakuten.isChecked()
-        self.checkYoon = self.ui.checkYoon.isChecked()        
+        self.q_count = self.interface.spinBox.value()
+        self.char_set = self.interface.comboBox.currentText() 
+        self.check_dakuten = self.interface.checkDakuten.isChecked()
+        self.check_yoon = self.interface.checkYoon.isChecked()        
                 
-        quiz = QuizDlg(self.qCount, self.charSet, self.checkDakuten, self.checkYoon)
+        quiz = QuizDialog.QuizDlg(self.q_count, self.char_set, 
+                       self.check_dakuten, self.check_yoon)
+
         quiz.exec_()
 

@@ -1,22 +1,28 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+"""
+Represents the about dialog
+"""
 
-from ui.Ui_about import *
+from PyQt4 import QtGui
 
-class AboutDialog(QDialog):
+import ui.Ui_about 
+
+class AboutDialog(QtGui.QDialog):
     """
+    Represents the about dialog
     """
     
     def __init__(self, parent=None):
         """
+        Constructer
         """
         super(AboutDialog, self).__init__(parent)
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self)
-        self.ui.labelImg.setPixmap(QPixmap(":/imgs/icons/avatar.png"))
+        self.interface = ui.Ui_about.Ui_Dialog()
+        self.interface.setupUi(self)
+        self.interface.labelImg.setPixmap(
+            QtGui.QPixmap(":/imgs/icons/avatar.png"))
         self.center_on_screen()
         
     def center_on_screen(self):

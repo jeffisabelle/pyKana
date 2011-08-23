@@ -1,191 +1,206 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
+"""
+This class represents the quiz dialog
+where users answers questions
+"""
 
 import random
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4 import QtCore
+from PyQt4 import QtGui
 
-from ui.Ui_quizDialog import *
+import ui.Ui_quizDialog 
 import alphabet
-import icons_rc
+import resources_rc
 
-class QuizDlg(QDialog):
+class QuizDlg(QtGui.QDialog):
     """
     This class represents the quiz dialog
     where users answers questions
     """
            
-    def __init__(self, questionCount, charSet, cDakuten, cYoon, parent=None):
+    def __init__(self, question_count, char_set, 
+                 check_dakuten, check_yoon, parent=None):
         """
         constructer for objects
 
         Arguments:
-        - `questionCount`: count of the questions that is going to be asked
+        - `question_count`: count of the questions that is going to be asked
         """
         super(QuizDlg, self).__init__(parent)
 
         # question count
-        self.qCount = questionCount 
+        self.q_count = question_count 
         
         # check's are boolean
-        self.charSet = charSet
-        self.checkDakuten = cDakuten
-        self.checkYoon = cYoon
+        self.char_set = char_set
+        self.check_dakuten = check_dakuten
+        self.check_yoon = check_yoon
+        self.answer = ""
  
         # char array for quiz
         self.chars = []
 
         # variables
-        self.correctCount = 0
-        self.wrongCount = 0
-        self.qAnswered = 0
+        self.correct_count = 0
+        self.wrong_count = 0
+        self.q_answered = 0
         self.response = None
 
-        self.ui = Ui_quizDialog()
-        self.ui.setupUi(self)
+        self.interface = ui.Ui_quizDialog.Ui_quizDialog()
+        self.interface.setupUi(self)
         
-        self.connect(self.ui.btn1, SIGNAL("clicked()"), self.buttonClicked)
-        self.connect(self.ui.btn2, SIGNAL("clicked()"), self.buttonClicked)
-        self.connect(self.ui.btn3, SIGNAL("clicked()"), self.buttonClicked)
-        self.connect(self.ui.btn4, SIGNAL("clicked()"), self.buttonClicked)
+        self.connect(self.interface.btn1, QtCore.SIGNAL("clicked()"), 
+                     self.button_clicked)
+        self.connect(self.interface.btn2, QtCore.SIGNAL("clicked()"), 
+                     self.button_clicked)
+        self.connect(self.interface.btn3, QtCore.SIGNAL("clicked()"), 
+                     self.button_clicked)
+        self.connect(self.interface.btn4, QtCore.SIGNAL("clicked()"), 
+                     self.button_clicked)
             
-        self.ui.totalCount.setText(str(self.qAnswered)+"/"+str(self.qCount))
-        self.setRangeOfChars()
-        self.startQuiz()
-
-
-    def setRangeOfChars(self):
-        """
+        self.interface.totalCount.setText(
+            str(self.q_answered)+"/"+str(self.q_count))
         
+        self.set_chars()
+        self.start_quiz()
+
+
+    def set_chars(self):
         """
-        if self.charSet == "Hiragana":
+        set the chars array
+        """
+        if self.char_set == "Hiragana":
             self.chars = alphabet.hiragana[:]
-        elif self.charSet == "Katakana":
+        elif self.char_set == "Katakana":
             self.chars = alphabet.katakana[:]
         else:
             self.chars = alphabet.hiragana[:]
-            for c in alphabet.katakana:
-                self.chars.append(c)
+            for char in alphabet.katakana:
+                self.chars.append(char)
         
-        if self.checkDakuten == True:
-            for c in alphabet.dakuten:
-                self.chars.append(c)
+        if self.check_dakuten == True:
+            for char in alphabet.dakuten:
+                self.chars.append(char)
 
-        if self.checkYoon == True:
-            for c in alphabet.yoon:
-                self.chars.append(c)
+        if self.check_yoon == True:
+            for char in alphabet.yoon:
+                self.chars.append(char)
 
 
-    def getRandomChar(self):
+    def get_random_char(self):
         """
         returns a random character
         """
              
-        if self.charSet == "Both":
+        if self.char_set == "Both":
             arr = ["hiragana","katakana"]
-            set = random.choice(arr)
+            char_set = random.choice(arr)
         else:
-            set = str(self.charSet)
-            set = set.lower()
+            char_set = str(self.char_set)
+            char_set = char_set.lower()
 
 
         correct = random.choice(self.chars)
-        self.ui.imgLabel.setPixmap(QPixmap(":/imgs/"+set+"/"+correct+".png"))
+        self.interface.imgLabel.setPixmap(
+            QtGui.QPixmap(":/imgs/"+char_set+"/"+correct+".png"))
+        
         return correct
 
-    def setButtonsText(self):
+    def set_buttons_text(self):
         """
         sets the buttons text's
         """
 
-        charArr = self.chars[:]
+        char_arr = self.chars[:]
           
-        charArr.remove(self.answer)
+        char_arr.remove(self.answer)
         
-        rnd1 = random.choice(charArr)
-        charArr.remove(rnd1)
+        rnd1 = random.choice(char_arr)
+        char_arr.remove(rnd1)
 
-        rnd2 = random.choice(charArr)
-        charArr.remove(rnd2)
+        rnd2 = random.choice(char_arr)
+        char_arr.remove(rnd2)
 
-        rnd3 = random.choice(charArr)
-        charArr.remove(rnd3)
+        rnd3 = random.choice(char_arr)
+        char_arr.remove(rnd3)
 
-        rnd4 = random.choice(charArr)
-        charArr.remove(rnd4)
+        rnd4 = random.choice(char_arr)
+        char_arr.remove(rnd4)
 
-        buttons = [self.ui.btn1,self.ui.btn2,self.ui.btn3,self.ui.btn4]
+        buttons = [self.interface.btn1, self.interface.btn2, 
+                   self.interface.btn3, self.interface.btn4]
         
-        self.ui.btn1.setText(rnd1)
-        self.ui.btn2.setText(rnd2)
-        self.ui.btn3.setText(rnd3)
-        self.ui.btn4.setText(rnd4)
+        self.interface.btn1.setText(rnd1)
+        self.interface.btn2.setText(rnd2)
+        self.interface.btn3.setText(rnd3)
+        self.interface.btn4.setText(rnd4)
 
         random.choice(buttons).setText(self.answer)
 
-    def startQuiz(self):
+    def start_quiz(self):
         """
         starts the quiz
         """
-        self.answer = self.getRandomChar()
-        self.setButtonsText()        
+        self.answer = self.get_random_char()
+        self.set_buttons_text()        
 
-    def buttonClicked(self):
+    def button_clicked(self):
+        """
+        this method called when any answer button
+        clicked.
+        """
         sender = self.sender()
         self.response = sender.text()        
 
-        self.qAnswered += 1
-        self.ui.totalCount.setText(str(self.qAnswered)+"/"+str(self.qCount))
+        self.q_answered += 1
+        self.interface.totalCount.setText(
+            str(self.q_answered)+"/"+str(self.q_count))
 
         if(self.answer==self.response):
-            self.correctCount += 1
-            self.ui.correctCount.setText(str(self.correctCount))                    
+            self.correct_count += 1
+            self.interface.correctCount.setText(
+                str(self.correct_count))                    
         else:
-            self.wrongCount += 1
-            self.ui.wrongCount.setText(str(self.wrongCount))
+            self.wrong_count += 1
+            self.interface.wrongCount.setText(str(self.wrong_count))
 
-        if(self.qAnswered>=self.qCount):
+        if(self.q_answered>=self.q_count):
             self.close()
 
-            msgBox = QMessageBox()
-            msgBox.setText("You have finished your quiz!")
-            msgBox.setInformativeText("You got "+str(self.correctCount)+" correct answer \nin "+ str(self.qCount)+" questions.")
-            fark = self.qAnswered / 5.0
-            rangeTooBad = fark
-            rangeBad = fark * 2
-            rangeNormal = fark * 3
-            rangeGood = fark * 4
-            rangePerfect = fark * 5
-            
-            if self.correctCount <= rangeTooBad:                
-                # print "too bad" 
-                msgBox.setWindowTitle("Y U don't know kana!")
-                msgBox.setIconPixmap(QPixmap(":/imgs/icons/1.png"))
-            elif self.correctCount > rangeTooBad and self.correctCount <= rangeBad:
-                # print "bad"
-                msgBox.setWindowTitle("Sorry but you need to work hard!")
-                msgBox.setIconPixmap(QPixmap(":/imgs/icons/2.png"))
-            elif self.correctCount > rangeBad and self.correctCount <= rangeNormal:
-                # print "normal"
-                msgBox.setWindowTitle("It's not bad!")
-                msgBox.setIconPixmap(QPixmap(":/imgs/icons/3.png"))
-            elif self.correctCount > rangeNormal and self.correctCount <= rangeGood:
-                # print "good"
-                msgBox.setWindowTitle("Wow, that is a good score!")
-                msgBox.setIconPixmap(QPixmap(":/imgs/icons/4.png"))
-            else:
-                # print "perfect"
-                msgBox.setWindowTitle("Y U Know Kana!")
-                msgBox.setIconPixmap(QPixmap(":/imgs/icons/5.png"))
+            msg_box = QtGui.QMessageBox()
+            msg_box.setText("You have finished your quiz!")
+            msg_box.setInformativeText("You got "+str(self.correct_count)+
+                                      " correct answer \nin "+ 
+                                      str(self.q_count)+" questions.")
 
-            msgBox.exec_()
+            fark = self.q_answered / 5.0
+            range_too_bad = fark
+            range_bad = fark * 2
+            range_normal = fark * 3
+            range_good = fark * 4
+            
+            if self.correct_count <= range_too_bad:                
+                msg_box.setWindowTitle("Y U don't know kana!")
+                msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/1.png"))
+            elif (self.correct_count > range_too_bad and 
+                  self.correct_count <= range_bad):           
+                msg_box.setWindowTitle("Sorry but you need to work hard!")
+                msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/2.png"))
+            elif (self.correct_count > range_bad and 
+                  self.correct_count <= range_normal):
+                msg_box.setWindowTitle("It's not bad!")
+                msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/3.png"))
+            elif (self.correct_count > range_normal and 
+                  self.correct_count <= range_good):
+                msg_box.setWindowTitle("Wow, that is a good score!")
+                msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/4.png"))
+            else:
+                msg_box.setWindowTitle("Y U Know Kana!")
+                msg_box.setIconPixmap(QtGui.QPixmap(":/imgs/icons/5.png"))
+
+            msg_box.exec_()
 
         # ask new question recursively if not finish
-        self.startQuiz()
-
-
-            
-
-            
-            
+        self.start_quiz()
