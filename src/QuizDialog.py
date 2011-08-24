@@ -72,20 +72,20 @@ class QuizDlg(QtGui.QDialog):
         set the chars array
         """
         if self.char_set == "Hiragana":
-            self.chars = alphabet.hiragana[:]
+            self.chars = alphabet.HIRAGANA[:]
         elif self.char_set == "Katakana":
-            self.chars = alphabet.katakana[:]
+            self.chars = alphabet.KATAKANA[:]
         else:
-            self.chars = alphabet.hiragana[:]
-            for char in alphabet.katakana:
+            self.chars = alphabet.HIRAGANA[:]
+            for char in alphabet.KATAKANA:
                 self.chars.append(char)
         
         if self.check_dakuten == True:
-            for char in alphabet.dakuten:
+            for char in alphabet.DAKUTEN:
                 self.chars.append(char)
 
         if self.check_yoon == True:
-            for char in alphabet.yoon:
+            for char in alphabet.YOON:
                 self.chars.append(char)
 
 

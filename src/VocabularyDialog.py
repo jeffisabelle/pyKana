@@ -64,12 +64,12 @@ class VocabularyDialog(QtGui.QDialog):
         """
         sets the word
         """
-        self.word_arr = random.choice(dictionary.romanize)
+        self.word_arr = random.choice(dictionary.DICT_ARR)
         self.correct_answer = self.word_arr[0]
         self.syllable_ver = self.word_arr[1]
         self.char_set = self.word_arr[2]      
         self.meaning_of_word = self.word_arr[3]
-        self.pic_array = dictionary.getPictureArray(self.syllable_ver)
+        self.pic_array = dictionary.get_picture_array(self.syllable_ver)
         
 
     def get_length_of_the_word(self):
@@ -120,7 +120,7 @@ class VocabularyDialog(QtGui.QDialog):
         sets the labels of buttons.
         """
         answers_arr = []
-        for row in dictionary.romanize:
+        for row in dictionary.DICT_ARR:
             answers_arr.append(row[3])
         
         answers_arr.remove(self.meaning_of_word)

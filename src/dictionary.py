@@ -1,4 +1,10 @@
-romanize = [
+"""
+This module contains dictionary array
+for both Vocabulary Practice and
+Romanize Words section. 
+"""
+
+DICT_ARR = [
     ["anohito","a-no-hi-to","hiragana", "that person"],
     ["konnichiwa","ko-n-ni-chi-wa","hiragana", "hello"],    
     ["arigatou","a-ri-ga-to-u","hiragana", "thank you"],
@@ -17,7 +23,7 @@ romanize = [
     ["isha","i-sha","hiragana", "doctor"]
     ]
     
-def getPictureArray(string):
+def get_picture_array(string):
     """    
     returns given string as an array after removing minus signs 
     and adding '.png' to every syllable.
@@ -38,11 +44,14 @@ def getPictureArray(string):
 
     return new_string
 
-def sizeOfTheWord(string):
+def size_of_the_word(string):
     """
+    returns the size of the given string
+    Arguments:
+    - `string`: the word that is going to be processed  
     """
-    word = getPictureArray(string)
+    word = get_picture_array(string)
     return len(word)
         
-# print getPictureArray("ko-tsuS-ni-chi-wa")
-# print sizeOfTheWord("ko-tsuS-ni-chi-wa")
+# print get_picture_array("ko-tsuS-ni-chi-wa")
+# print size_of_the_word("ko-tsuS-ni-chi-wa")
