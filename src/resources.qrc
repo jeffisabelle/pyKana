@@ -1,5 +1,14 @@
 <RCC>
   <qresource prefix="/">
+    <file>imgs/icons/test.png</file>
+    <file>imgs/icons/d_added.png</file>
+    <file>imgs/icons/d_already.png</file>
+    <file>imgs/icons/background.png</file>
+    <file>imgs/icons/d_quit.png</file>
+    <file>imgs/icons/d_back.png</file>
+    <file>imgs/icons/d_add.png</file>
+    <file>imgs/icons/d_edit.png</file>
+    <file>imgs/icons/d_remove.png</file>
     <file>imgs/katakana/resized/a.png</file>
     <file>imgs/katakana/resized/ba.png</file>
     <file>imgs/katakana/resized/be.png</file>

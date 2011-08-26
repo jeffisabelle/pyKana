@@ -30,7 +30,6 @@ class VocabularyDialog(QtGui.QDialog):
         self.interface = ui.Ui_vocabulary.Ui_vocabularyDialog()
         self.interface.setupUi(self)
        
-        self.ask_new_word()
         self.center_on_screen()        
 
         self.connect(self.interface.cevap1Button, 
@@ -42,7 +41,9 @@ class VocabularyDialog(QtGui.QDialog):
         self.connect(self.interface.cevap4Button, 
                      QtCore.SIGNAL("clicked()"), self.button_clicked)
 
-        self.word_arr = []
+
+        self.dictionary_array = dictionary.load_array("data.dat")
+        self.word_arr = random.choice(self.dictionary_array)
         self.correct_answer = ""
         self.syllable_ver = ""
         self.char_set = ""
@@ -51,6 +52,8 @@ class VocabularyDialog(QtGui.QDialog):
         self.labels = []
         self.len_of_word = 0
         self.response_of_user = ""
+
+        self.ask_new_word()
 
     def center_on_screen(self):
         """
@@ -64,11 +67,11 @@ class VocabularyDialog(QtGui.QDialog):
         """
         sets the word
         """
-        self.word_arr = random.choice(dictionary.DICT_ARR)
-        self.correct_answer = self.word_arr[0]
-        self.syllable_ver = self.word_arr[1]
-        self.char_set = self.word_arr[2]      
-        self.meaning_of_word = self.word_arr[3]
+        self.word_arr = random.choice(dictionary.load_array("data.dat"))
+        self.correct_answer = str(self.word_arr[0])
+        self.syllable_ver = str(self.word_arr[1])
+        self.char_set = str(self.word_arr[2])
+        self.meaning_of_word = str(self.word_arr[3])
         self.pic_array = dictionary.get_picture_array(self.syllable_ver)
         
 
@@ -120,7 +123,7 @@ class VocabularyDialog(QtGui.QDialog):
         sets the labels of buttons.
         """
         answers_arr = []
-        for row in dictionary.DICT_ARR:
+        for row in self.dictionary_array:
             answers_arr.append(row[3])
         
         answers_arr.remove(self.meaning_of_word)

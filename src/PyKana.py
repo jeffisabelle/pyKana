@@ -13,6 +13,7 @@ import QuizSettingsDialog
 import RomanizeWords
 import VocabularyDialog
 import AboutDialog
+import DictionaryDialog
 import ui.Ui_main
 
 class PyKana(QtGui.QMainWindow):
@@ -41,6 +42,9 @@ class PyKana(QtGui.QMainWindow):
 
         self.connect(self.interface.vocabButton, QtCore.SIGNAL("clicked()"), 
                      vocabulary_clicked)
+
+        self.connect(self.interface.editButton, QtCore.SIGNAL("clicked()"), 
+                     dictionary_clicked)
         
         self.connect(self.interface.actionReadme, QtCore.SIGNAL("triggered()"), 
                      readme_triggered)
@@ -79,6 +83,14 @@ def vocabulary_clicked():
     """
     vocabulary = VocabularyDialog.VocabularyDialog()
     vocabulary.exec_()
+
+def dictionary_clicked():
+    """
+    Shows the Edit Dictionary dialog
+    """
+    dictionary = DictionaryDialog.DictionaryDialog()
+    dictionary.exec_()
+
 
 def readme_triggered():
     """

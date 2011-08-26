@@ -27,7 +27,6 @@ class RomanizeWords(QtGui.QDialog):
         self.interface.lineEdit.setText("romanize it here, and press enter")
         self.interface.lineEdit.selectAll()
 
-
         self.word_arr = []
         self.correct_answer = ""
         self.syllable_ver = ""
@@ -66,7 +65,7 @@ class RomanizeWords(QtGui.QDialog):
         """
         sets the word
         """
-        self.word_arr = random.choice(dictionary.DICT_ARR)
+        self.word_arr = random.choice(dictionary.load_array("data.dat"))
         self.correct_answer = self.word_arr[0]
         self.syllable_ver = self.word_arr[1]
         self.char_set = self.word_arr[2]      
