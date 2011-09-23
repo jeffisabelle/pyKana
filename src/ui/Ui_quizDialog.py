@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_quizDialog.ui'
 #
-# Created: Mon Aug 22 00:01:56 2011
+# Created: Tue Sep  6 14:09:17 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -90,7 +90,7 @@ class Ui_quizDialog(object):
         sizePolicy.setHeightForWidth(self.wrongLabel.sizePolicy().hasHeightForWidth())
         self.wrongLabel.setSizePolicy(sizePolicy)
         self.wrongLabel.setText("")
-        self.wrongLabel.setPixmap(QtGui.QPixmap("imgs/icons/qdlg_wrong.png"))
+        self.wrongLabel.setPixmap(QtGui.QPixmap(":/imgs/icons/qdlg_wrong.png"))
         self.wrongLabel.setObjectName("wrongLabel")
         self.correctLabe = QtGui.QLabel(quizDialog)
         self.correctLabe.setGeometry(QtCore.QRect(40, 550, 29, 32))
@@ -100,7 +100,7 @@ class Ui_quizDialog(object):
         sizePolicy.setHeightForWidth(self.correctLabe.sizePolicy().hasHeightForWidth())
         self.correctLabe.setSizePolicy(sizePolicy)
         self.correctLabe.setText("")
-        self.correctLabe.setPixmap(QtGui.QPixmap("imgs/icons/qdlg_correct.png"))
+        self.correctLabe.setPixmap(QtGui.QPixmap(":/imgs/icons/qdlg_correct.png"))
         self.correctLabe.setObjectName("correctLabe")
 
         self.retranslateUi(quizDialog)

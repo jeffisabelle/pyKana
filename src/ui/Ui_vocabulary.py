@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Ui_vocabulary.ui'
 #
-# Created: Fri Aug 26 00:50:19 2011
+# Created: Tue Sep  6 14:14:57 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,11 +23,12 @@ class Ui_vocabularyDialog(object):
         self.label.setPixmap(QtGui.QPixmap(":/imgs/icons/background.png"))
         self.label.setObjectName("label")
         self.groupBox = QtGui.QGroupBox(vocabularyDialog)
-        self.groupBox.setGeometry(QtCore.QRect(0, -10, 791, 241))
+        self.groupBox.setGeometry(QtCore.QRect(0, 0, 800, 230))
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
         self.gridLayout = QtGui.QGridLayout(self.groupBox)
-        self.gridLayout.setContentsMargins(-1, 0, -1, -1)
+        self.gridLayout.setContentsMargins(2, 0, 2, 2)
+        self.gridLayout.setHorizontalSpacing(2)
         self.gridLayout.setVerticalSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
         self.intoLabel = QtGui.QLabel(self.groupBox)
@@ -124,7 +125,7 @@ class Ui_vocabularyDialog(object):
         QtCore.QMetaObject.connectSlotsByName(vocabularyDialog)
 
     def retranslateUi(self, vocabularyDialog):
-        vocabularyDialog.setWindowTitle(QtGui.QApplication.translate("vocabularyDialog", "Vocabulary Test [under-development}", None, QtGui.QApplication.UnicodeUTF8))
+        vocabularyDialog.setWindowTitle(QtGui.QApplication.translate("vocabularyDialog", "Vocabulary Test [under-development]", None, QtGui.QApplication.UnicodeUTF8))
         self.intoLabel.setText(QtGui.QApplication.translate("vocabularyDialog", "What Does This Word Means", None, QtGui.QApplication.UnicodeUTF8))
         self.romanizedLabel.setText(QtGui.QApplication.translate("vocabularyDialog", "romanizedLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.cevap1Button.setText(QtGui.QApplication.translate("vocabularyDialog", "answer1", None, QtGui.QApplication.UnicodeUTF8))
