@@ -8,11 +8,10 @@ although it is still under-development,
 you can still get it working and test some of the futures.
 
 ## todo list
-* add full support for (han)dakuten and yōon
-* resize some of the images that are not fit into frame
-* add flash cards support 
-* add vocabulary section
-* let users to edit the dictionary for both vocabulary section and romanize words section
+* the words that are on dictionary should have categorized.
+* settings diologs should have added for both romanize and vocabulary sections
+* users should be able to choose both categories that they want to take quiz and the character set.
+* flash cards section should be implemented. (like anka)
 
 ## screenshots
 
